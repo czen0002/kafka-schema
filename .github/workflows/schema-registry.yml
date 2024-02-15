@@ -30,7 +30,7 @@ jobs:
           # Use curl or other tools to make HTTP requests to register new schema in Schema Registry API
           # Example: curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "..."}' http://schema-registry:8081/subjects/your-topic-value/versions
           # Use appropriate authentication and error handling
-          jq '. | {schema: tojson}' DeviceSubscription/DeviceSubscription.json | \
+          jq '. | {schema: tojson}' Purches/Purches.json | \
           curl -u ${{ env.API_KEY }}:${{ env.API_SECRET }} \
             -X POST https://${{ env.CLUSTER }}/subjects/device-subscription-value/versions \
             -H "Content-Type:application/json" \
