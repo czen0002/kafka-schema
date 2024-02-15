@@ -26,3 +26,4 @@ jobs:
           sudo add-apt-repository "deb https://packages.confluent.io/confluent-cli/deb stable main"
           sudo apt update
           sudo apt install confluent-cli
+          confluent --version
