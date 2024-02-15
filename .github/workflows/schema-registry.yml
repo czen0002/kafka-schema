@@ -33,5 +33,5 @@ jobs:
           curl -u ${{ env.API_KEY }}:${{ env.API_SECRET }} \
             -X POST https://${{ env.CLUSTER }}/subjects/device-subscription-value/versions \
             -H "Content-Type:application/json" \
-            -d @file.json DeviceSubscription/DeviceSubscription.json
+            -d @DeviceSubscription/DeviceSubscription.json
           
