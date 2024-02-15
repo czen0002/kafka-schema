@@ -28,3 +28,16 @@ jobs:
           sudo apt update
           sudo apt install confluent-cli
           confluent --version
+          
+      - name: Register New Schema
+        run: |
+          # Use curl or other tools to make HTTP requests to register new schema in Schema Registry API
+          # Example: curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "..."}' http://schema-registry:8081/subjects/your-topic-value/versions
+          # Use appropriate authentication and error handling
+          confluent schema-registry schema create \
+           -- subject device-subscription-value \
+           -- schema DeviceSubscription/DeviceSubscription.json
+           -- type json
+           -- api-key ${{ env.API_KEY }}
+           -- api-secret $ {{ env.API_SECRET }}
+      
