@@ -5,6 +5,12 @@ on:
     branches:
       - main
 
+env:
+  CLUSTER: http://schema-registry:8081
+  API_KEY: ${{ secrets.API_KEY }}
+  API_SECRET: ${{ secrets.API_SECRET }}
+
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -15,22 +21,8 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          # Install any dependencies or tools needed for your workflow
-
-      - name: Retrieve Schema
-        run: |
-          # Use curl or other tools to make HTTP requests to retrieve schema from Schema Registry API
-          # Example: curl -o schema.json http://schema-registry:8081/subjects/your-topic-value/versions/latest/schema
-          # Use appropriate authentication and error handling
-
-      - name: Validate Data Against Schema
-        run: |
-          # Use tools or libraries to validate data against retrieved schema
-          # Example: avro-tools validate --schema-file schema.json data.avro
-          # Use appropriate error handling and logging
-
-      - name: Register New Schema
-        run: |
-          # Use curl or other tools to make HTTP requests to register new schema in Schema Registry API
-          # Example: curl -X POST -H "Content-Type: application/vnd.schemaregistry.v1+json" --data '{"schema": "..."}' http://schema-registry:8081/subjects/your-topic-value/versions
-          # Use appropriate authentication and error handling
+          get -qO - https://packages.confluent.io/confluent-cli/deb/archive.key | sudo apt-key add
+          sudo apt install software-properties-common
+          sudo add-apt-repository "deb https://packages.confluent.io/confluent-cli/deb stable main"
+          sudo apt update
+          sudo apt install confluent-cli
