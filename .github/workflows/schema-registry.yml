@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - 'feature/.*'
+      - 'feature/**'
 
 env:
   CLUSTER: http://schema-registry:8081
