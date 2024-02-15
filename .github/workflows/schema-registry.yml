@@ -4,10 +4,10 @@ on:
   push:
     branches:
       - main
-      - 'feature/.*'
+      - 'feature/**'
 
 env:
-  CLUSTER: http://schema-registry:8081
+  CLUSTER: https://psrc-4r3n1.us-central1.gcp.confluent.cloud
   API_KEY: ${{ secrets.API_KEY }}
   API_SECRET: ${{ secrets.API_SECRET }}
 
@@ -27,3 +27,6 @@ jobs:
           sudo add-apt-repository "deb https://packages.confluent.io/confluent-cli/deb stable main"
           sudo apt update
           sudo apt install confluent-cli
+          confluent --version
+          sudo apt install -y curl
+          curl --version
