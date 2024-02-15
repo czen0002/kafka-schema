@@ -7,7 +7,7 @@ on:
       - 'feature/**'
 
 env:
-  CLUSTER: https://psrc-4r3n1.us-central1.gcp.confluent.cloud
+  CLUSTER: psrc-4r3n1.us-central1.gcp.confluent.cloud
   API_KEY: ${{ secrets.API_KEY }}
   API_SECRET: ${{ secrets.API_SECRET }}
 
@@ -22,12 +22,6 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          wget -qO - https://packages.confluent.io/confluent-cli/deb/archive.key | sudo apt-key add
-          sudo apt install software-properties-common
-          sudo add-apt-repository "deb https://packages.confluent.io/confluent-cli/deb stable main"
-          sudo apt update
-          sudo apt install confluent-cli
-          confluent --version
           sudo apt install -y curl
           curl --version
 
