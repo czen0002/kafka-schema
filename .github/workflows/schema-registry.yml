@@ -32,7 +32,7 @@ jobs:
           # Use appropriate authentication and error handling
           jq . Purchase/Purchase.json | \
           curl -u ${{ env.API_KEY }}:${{ env.API_SECRET }} \
-            -X POST https://${{ env.CLUSTER }}/subjects/device-subscription-value/versions \
+            -X POST https://${{ env.CLUSTER }}/subjects/purchase-value/versions \
             -H "Content-Type: application/vnd.schemaregistry.v1+json" \
             -d @-
           
