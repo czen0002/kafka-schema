@@ -1,8 +1,9 @@
 {
-  "type": "object",
+  "$schema":"http://json-schema.org/draft-07/schema#",
+  "type":"object",
   "properties": {
-    "name": {
-      "type": "string"
+  "name": {
+    "type": "string"
     },
     "age": {
       "type": "integer"
@@ -14,4 +15,3 @@
   },
   "required": ["name", "age"]
 }
-
